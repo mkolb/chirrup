@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Chirrup::Application.config.secret_key_base = 'a24a159f389ffeab8de7573568e91b89e78959abe31bc84cd057588014a676de598b7821f4743539bdc3eb6b168d5ce1bfa135806cb3c00b7de595abab652c87'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Chirrup::Application.config.secret_key_base = secure_token
