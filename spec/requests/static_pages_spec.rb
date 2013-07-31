@@ -2,75 +2,41 @@ require 'spec_helper'
 
 describe "Static pages" do
   let(:title) { 'Chirrup | ' }
+  subject { page }
   describe "Home page" do
-    it "should have the content 'Chirrup'" do
-      visit root_path
-      expect(page).to have_content('Chirrup')
-    end
-
-    it "should have the title 'Home'" do
-      visit root_path
-      expect(page).to have_title("#{title}Home")
-    end
+    before { visit root_path }
+    it { should have_content('Chirrup') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
 
   describe "Help page" do
-    it "should have the content 'Help'" do
-      visit help_path
-      expect(page).to have_content('Help')
-    end
-
-    it "should have the title 'Help'" do
-      visit help_path
-      expect(page).to have_title("#{title}Help")
-    end
+    before {visit help_path}
+    it { should have_content('Help') }
+    it { should have_title(full_title('Help')) }
   end
 
   describe "About page" do
-    it "should have the content 'About'" do
-      visit about_path
-      expect(page).to have_content('About')
-    end
-
-    it "should have the title 'About'" do
-      visit about_path
-      expect(page).to have_title("#{title}About")
-    end
+    before { visit about_path }
+    it { should have_content('About') }
+    it { should have_title(full_title('About')) }
   end
 
   describe "Contact page" do
-    it "should have the content 'Contact'" do
-      visit contact_path
-      expect(page).to have_content('Contact')
-    end
-
-    it "should have the title 'Contact'" do
-      visit contact_path
-      expect(page).to have_title("#{title}Contact")
-    end
+    before { visit contact_path }
+    it { should have_content('Contact') }
+    it { should have_title(full_title('Contact')) }
   end
 
   describe "Sign In page" do
-    it "should have the content 'Sign In'" do
-      visit signin_path
-      expect(page).to have_content('Sign In')
-    end
-
-    it "should have the title 'Sign In'" do
-      visit signin_path
-      expect(page).to have_title("#{title}Sign In")
-    end
+    before {visit signin_path }
+    it { should have_content('Sign In') }
+    it { should have_title(full_title('Sign In')) }
   end
 
   describe "Sign Up page" do
-    it "should have the content 'Sign Up'" do
-      visit signup_path
-      expect(page).to have_content('Sign Up')
-    end
-
-    it "should have the title 'Sign Up'" do
-      visit signup_path
-      expect(page).to have_title("#{title}Sign Up")
-    end
+    before {visit signup_path }
+    it { should have_content('Sign Up') }
+    it { should have_title(full_title('Sign Up')) }
   end
 end
