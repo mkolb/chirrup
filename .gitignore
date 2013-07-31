@@ -21,4 +21,4 @@
 
 # Security.
 .secret
-/config/database.yml
+.env
