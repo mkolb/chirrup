@@ -1,2 +1,14 @@
 <% provide(:title, 'Home') %>
-<h1>Chirrup</h1>
+
+<div class="center hero-unit">
+  <h1>Welcome to Chirrup!</h1>
+
+  <h2>
+    Chirrup is a Twitter clone for use in courses as an LTI activity
+  </h2>
+
+  <p>You can create an account locally, or you can login through your
+  Learning Management System through Single Sign On (SSO).<p>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
